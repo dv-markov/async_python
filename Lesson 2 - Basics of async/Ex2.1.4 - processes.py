@@ -22,7 +22,7 @@ counter = 0
 def fn(n):
     global counter
     print(f'fn {n} запущена в PID {os.getpid()}')
-    time.sleep(5)
+    time.sleep(2)
     # Изменяем значение счетчика
     counter += 1
     # Печатаем его значение
