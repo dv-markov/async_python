@@ -23,7 +23,6 @@ def main():
 main()
 
 # async
-import time
 import asyncio
 
 start = time.time()  # Время начала эксперимента!)
@@ -41,8 +40,8 @@ async def sleeping(n):
 
 async def main():
     # Запускаю 30 операций.
-    task = [sleeping(i) for i in range(1, 31)]
-    all_results = await asyncio.gather(*task)
+    tasks = [sleeping(i) for i in range(1, 31)]
+    all_results = await asyncio.gather(*tasks)
     print(f"Выполнено {len(all_results)} операций.")
     print(f"Программа завершена за {time.time() - start:.4f}")
 
