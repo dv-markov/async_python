@@ -12,6 +12,7 @@ async def process_data():
     await asyncio.sleep(1)
     return "Данные обработаны"
 
+
 async def main():
     fetched_data = await fetch_data()
     processed_data = await process_data()
