@@ -1,4 +1,5 @@
 import dis
+import sys
 
 
 def sum_2(a, b):
@@ -6,3 +7,4 @@ def sum_2(a, b):
 
 
 dis.dis(sum_2)
+print(sys.getswitchinterval())
