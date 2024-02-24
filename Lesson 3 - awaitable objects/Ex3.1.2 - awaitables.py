@@ -37,8 +37,8 @@ async def main():
     tasks = [asyncio.create_task(cook_dish(n)) for n in range(1, 5)]
     print("Tasks created")
 
-    # Ожидает завершения всех задач, затем выводит
-    # результат. asyncio.gather используется для ожидания всех корутин, затем собирает их результаты в список.
+    # Ожидает завершения всех задач, затем выводит результат.
+    # asyncio.gather используется для ожидания всех корутин, затем собирает их результаты в список.
     print(await asyncio.gather(*tasks))
 
 
