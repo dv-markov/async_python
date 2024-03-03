@@ -1,4 +1,5 @@
 import asyncio
+import random
 
 
 async def main():
@@ -43,9 +44,6 @@ async def main():
 
 # Запуск асинхронной программы
 asyncio.run(main())
-
-
-import random
 
 
 async def boil_water(time: int):
