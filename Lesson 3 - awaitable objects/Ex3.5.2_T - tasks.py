@@ -72,7 +72,76 @@ async def main():
         await task
 
     # Вариант Хошева - ожидание выполнения каждой задачи
-    # Задержка 1 сек после каждого вывода
+    # Задержка 1 сек после каждого вывода - отстой
     # [await asyncio.create_task(print_with_delay(x)) for x in range(10)]
 
 asyncio.run(main())
+
+
+# Task 5 - Async counters
+max_counts = {
+    "Counter 1": 13,
+    "Counter 2": 7
+}
+
+counters = {
+    "Counter 1": 0,
+    "Counter 2": 0,
+}
+
+# print(list(counters)[0])
+#
+# for key in counters:
+#     print(key)
+
+
+async def counter(counter_name, delay):
+    max_counter_value = max_counts[counter_name]
+    while counters[counter_name] < max_counter_value:
+        counters[counter_name] += 1
+        await asyncio.sleep(delay)
+        print(f"{counter_name}: {counters[counter_name]}")
+
+
+async def main():
+    tasks = [asyncio.create_task(counter(c_name, 0.1)) for c_name in counters]
+    await asyncio.gather(*tasks)
+
+asyncio.run(main())
+
+
+# Task 6 - Advanced counters
+max_counts = {
+    "Counter 1": 13,
+    "Counter 2": 7,
+    "Counter 3": 15,
+}
+
+delays = {
+    "Counter 1": 1,
+    "Counter 2": 2,
+    "Counter 3": 0.5,
+}
+
+counters = {
+    "Counter 1": 0,
+    "Counter 2": 0,
+    "Counter 3": 0,
+}
+
+
+async def counter(counter_name, delay):
+    while counters[counter_name] < max_counts[counter_name]:
+        counters[counter_name] += 1
+        await asyncio.sleep(delay)
+        print(f"{counter_name}: {counters[counter_name]}")
+
+
+async def main():
+    tasks = [asyncio.create_task(counter(c_name, delays[c_name])) for c_name in counters]
+    await asyncio.gather(*tasks)
+
+asyncio.run(main())
+
+
+
